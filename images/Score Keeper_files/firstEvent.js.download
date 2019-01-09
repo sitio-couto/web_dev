@@ -1,0 +1,18 @@
+// var p1 = document.selectById("p1");
+// var p2 = document.selectById("p2");
+// var max = document.selectById("max");
+var buttons = document.querySelector("button");
+var maxScore = document.querySelector("input");
+
+maxScore[0].addEventlistener("click", changeMax);
+buttons[0].addEventListener("click", addToP1);
+buttons[1].addEventListener("click", addToP2);
+buttons[2].addEventListener("click", reset);
+
+function addToP1(){
+  checkScore(++(document.getElementById("p1")));
+}
+
+function addToP2(){
+  checkScore(++(document.getElementById("p2")));
+}

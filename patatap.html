@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PAT-A-TAP</title>
+    <link rel="stylesheet" href="styles/patatap.css">
+    <script type="text/javascript" src="scripts/patatap.js"></script>
+    <script type="text/javascript" src="scripts/paper.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.9/howler.core.min.js"></script>
+
+    <script type="text/paperscript" canvas="myCanvas">
+      var keyData = [];
+      var circles = [];
+
+      generateData();
+
+      function onKeyDown(event){
+        if(event.key.length != 1 || event.key.charCodeAt(0) < 97 || event.key.charCodeAt(0) > 122)
+          return;
+
+        console.log(event.key.charCodeAt(0));
+
+        var maxPoint = new Point(view.size.height, view.size.width);
+        var x = Math.random()*maxPoint.x, y = Math.random()*maxPoint.y;
+        var ball = new Path.Circle(new Point(x, y), 200);
+
+        ball.fillColor = keyData[event.key.charCodeAt(0) - 97].color;
+        keyData[event.key.charCodeAt(0) - 97].sound.play();
+        circles.push(ball);
+      }
+
+      function onFrame(event){
+        for(var i=0; i < circles.length; ++i){
+          circles[i].scale(0.9);
+          if(circles[i].area < 1){
+            circles[i].remove();
+            circles.splice(i,1);
+            --i;
+          }
+        }
+      }
+
+      function generateData(){
+        for (var i = 0; i < 26; ++i){
+          keyData.push({
+              color: "#" + Math.floor(((i+1)*16777215)/26).toString(16),
+              sound: new Howl({
+                src: ['sounds/patatap/' + i + '.mp3']
+              })
+            });
+        }
+      }
+
+    </script>
+
+  </head>
+  <body>
+    <canvas id="myCanvas">
+
+    </canvas>
+  </body>
+</html>

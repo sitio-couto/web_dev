@@ -1,0 +1,89 @@
+html, body {
+  padding-top: 50px;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #33cccc 0%, #ffffff 100%);
+  font-family: 'Raleway', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  width: 400px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+li, div, input {
+    padding: 0;
+    border: 0;
+    height: 40px;
+    width: inherit;
+    outline: none;
+    box-sizing: border-box;
+    line-height: 40px;
+    float: left; /*SMOTHER COLAPSE OF INPUT!! */
+    background-color: rgb(245, 245, 245);
+}
+
+li:nth-of-type(2n + 1) {
+  background-color: white;
+}
+
+input {
+  font-size: 17px;
+  font-family: 'Raleway', sans-serif;
+  color: #00BBCC;
+  padding: 8px;
+}
+
+input:focus {
+  padding: 5px;
+  background-color: white;
+  border: 3px solid #00B0CC;
+}
+
+div {
+  padding-left: 10px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  background-color: #00B0CC;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+button, img, span {
+  border: 0;
+  padding: 0;
+  height: inherit;
+}
+
+img {
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 200;
+  width: inherit;
+}
+
+button {
+  background-color: inherit;
+  outline: none;
+  float: right;
+}
+
+span {
+  box-sizing: border-box;
+  height: inherit;
+  margin-right: 10px;
+  width: 0px;
+  background-color: rgb(255, 100, 100);
+  float: left;
+  transition: width 0.2s;
+}
+
+li:hover span {
+  width: 40px;
+}
